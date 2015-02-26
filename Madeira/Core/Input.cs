@@ -57,7 +57,7 @@ namespace Madeira.Core
 		}
 
 		/// <summary>
-		/// The position of the mouse for the input.
+		/// Gets the current position of the mouse for the input.
 		/// </summary>
 		public Point MousePosition
 		{
@@ -68,7 +68,7 @@ namespace Madeira.Core
 		}
 
 		/// <summary>
-		/// The velocity of the mouse for the input.
+		/// Gets the current velocity of the mouse for the input.
 		/// </summary>
 		public Point MouseVelocity
 		{

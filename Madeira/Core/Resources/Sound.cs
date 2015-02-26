@@ -69,7 +69,7 @@ namespace Madeira.Resources
 		}
 
 		/// <summary>
-		/// The ID of the sound.
+		/// Gets the ID of the sound.
 		/// </summary>
 		public int ID
 		{
@@ -78,7 +78,7 @@ namespace Madeira.Resources
 		}
 
 		/// <summary>
-		/// The channels of the sound.
+		/// Gets the channels of the sound.
 		/// </summary>
 		public int Channels
 		{
@@ -87,7 +87,7 @@ namespace Madeira.Resources
 		}
 
 		/// <summary>
-		/// The sample rate of the sound.
+		/// Gets the sample rate of the sound.
 		/// </summary>
 		public int SampleRate
 		{
@@ -96,7 +96,7 @@ namespace Madeira.Resources
 		}
 
 		/// <summary>
-		/// If the sound is looping.
+		/// Gets or sets if the sound is looping.
 		/// </summary>
 		public bool Looping
 		{
@@ -113,7 +113,7 @@ namespace Madeira.Resources
 		}
 
 		/// <summary>
-		/// The balance of the sound.
+		/// Gets or sets the balance of the sound.
 		/// </summary>
 		public double Balance
 		{
@@ -130,7 +130,7 @@ namespace Madeira.Resources
 		}
 
 		/// <summary>
-		/// The pitch of the sound.
+		/// Gets or sets te pitch of the sound.
 		/// </summary>
 		public double Pitch
 		{
@@ -147,7 +147,7 @@ namespace Madeira.Resources
 		}
 
 		/// <summary>
-		/// The gain of the sound.
+		/// Gets or sets the gain of the sound.
 		/// </summary>
 		public double Gain
 		{

@@ -111,7 +111,7 @@ namespace Madeira.Maths
 		}
 
 		/// <summary>
-		/// The white colour.
+		/// Gets the white colour.
 		/// </summary>
 		public static Colour White
 		{
@@ -122,7 +122,7 @@ namespace Madeira.Maths
 		}
 
 		/// <summary>
-		/// The black colour.
+		/// Gets the black colour.
 		/// </summary>
 		public static Colour Black
 		{
@@ -133,7 +133,7 @@ namespace Madeira.Maths
 		}
 
 		/// <summary>
-		/// The solid red colour.
+		/// Gets the solid red colour.
 		/// </summary>
 		public static Colour SolidRed
 		{
@@ -144,7 +144,7 @@ namespace Madeira.Maths
 		}
 
 		/// <summary>
-		/// The solid green colour.
+		/// Gets the solid green colour.
 		/// </summary>
 		public static Colour SolidGreen
 		{
@@ -155,7 +155,7 @@ namespace Madeira.Maths
 		}
 
 		/// <summary>
-		/// The solid blue colour.
+		/// Gets the solid blue colour.
 		/// </summary>
 		public static Colour SolidBlue
 		{
@@ -166,7 +166,7 @@ namespace Madeira.Maths
 		}
 
 		/// <summary>
-		/// The grey colour.
+		/// Gets the grey colour.
 		/// </summary>
 		public static Colour Grey
 		{
@@ -177,7 +177,7 @@ namespace Madeira.Maths
 		}
 
 		/// <summary>
-		/// The brown colour.
+		/// Gets the brown colour.
 		/// </summary>
 		public static Colour Brown
 		{
@@ -188,7 +188,7 @@ namespace Madeira.Maths
 		}
 
 		/// <summary>
-		/// The purple colour.
+		/// Gets the purple colour.
 		/// </summary>
 		public static Colour Purple
 		{
@@ -199,7 +199,7 @@ namespace Madeira.Maths
 		}
 
 		/// <summary>
-		/// The yellow colour.
+		/// Gets the yellow colour.
 		/// </summary>
 		public static Colour Yellow
 		{
@@ -210,7 +210,7 @@ namespace Madeira.Maths
 		}
 
 		/// <summary>
-		/// The magenta colour.
+		/// Gets the magenta colour.
 		/// </summary>
 		public static Colour Magenta
 		{
@@ -221,7 +221,7 @@ namespace Madeira.Maths
 		}
 
 		/// <summary>
-		/// The cyan colour.
+		/// Gets the cyan colour.
 		/// </summary>
 		public static Colour Cyan
 		{
@@ -232,7 +232,7 @@ namespace Madeira.Maths
 		}
 
 		/// <summary>
-		/// The red value of the colour
+		/// Gets or sets the red value of the colour.
 		/// </summary>
 		public double Red
 		{
@@ -241,7 +241,7 @@ namespace Madeira.Maths
 		}
 
 		/// <summary>
-		/// The green value of the colour.
+		/// Gets or sets the green value of the colour.
 		/// </summary>
 		public double Green
 		{
@@ -250,7 +250,7 @@ namespace Madeira.Maths
 		}
 
 		/// <summary>
-		/// The blue value of the colour.
+		/// Gets or sets the blue value of the colour.
 		/// </summary>
 		public double Blue
 		{
@@ -259,7 +259,7 @@ namespace Madeira.Maths
 		}
 
 		/// <summary>
-		/// The alpha of the colour.
+		/// Gets or sets the alpha of the colour.
 		/// </summary>
 		public double Alpha
 		{

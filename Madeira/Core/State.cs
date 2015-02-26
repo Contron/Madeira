@@ -55,7 +55,7 @@ namespace Madeira.Core
 		}
 
 		/// <summary>
-		/// The game for the state.
+		/// Gets the game for the state.
 		/// </summary>
 		public Game Game
 		{

@@ -166,7 +166,7 @@ namespace Madeira.Maths
 		}
 
 		/// <summary>
-		/// The left vector.
+		/// Gets the left vector.
 		/// </summary>
 		public static Vector Left
 		{
@@ -177,7 +177,7 @@ namespace Madeira.Maths
 		}
 
 		/// <summary>
-		/// The right vector.
+		/// Gets the right vector.
 		/// </summary>
 		public static Vector Right
 		{
@@ -188,7 +188,7 @@ namespace Madeira.Maths
 		}
 
 		/// <summary>
-		/// The up vector.
+		/// Gets the up vector.
 		/// </summary>
 		public static Vector Up
 		{
@@ -199,7 +199,7 @@ namespace Madeira.Maths
 		}
 
 		/// <summary>
-		/// The down vector.
+		/// Gets the down vector.
 		/// </summary>
 		public static Vector Down
 		{
@@ -210,7 +210,7 @@ namespace Madeira.Maths
 		}
 
 		/// <summary>
-		/// The zero vector.
+		/// Gets the zero vector.
 		/// </summary>
 		public static Vector Zero
 		{
@@ -221,7 +221,7 @@ namespace Madeira.Maths
 		}
 
 		/// <summary>
-		/// The forward vector.
+		/// Gets the forward vector.
 		/// </summary>
 		public static Vector Forward
 		{
@@ -232,7 +232,7 @@ namespace Madeira.Maths
 		}
 
 		/// <summary>
-		/// The backward vector.
+		/// Gets the backward vector.
 		/// </summary>
 		public static Vector Backward
 		{
@@ -243,7 +243,7 @@ namespace Madeira.Maths
 		}
 
 		/// <summary>
-		/// The X value of the vector.
+		/// Gets or sets the X value of the vector.
 		/// </summary>
 		public double X
 		{
@@ -252,7 +252,7 @@ namespace Madeira.Maths
 		}
 
 		/// <summary>
-		/// The Y value of the vector.
+		/// Gets or sets the Y value of the vector.
 		/// </summary>
 		public double Y
 		{
@@ -261,7 +261,7 @@ namespace Madeira.Maths
 		}
 
 		/// <summary>
-		/// The Z value of the vector.
+		/// Gets or sets the Z value of the vector.
 		/// </summary>
 		public double Z
 		{

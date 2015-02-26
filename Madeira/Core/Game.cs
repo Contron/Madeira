@@ -191,7 +191,7 @@ namespace Madeira.Core
 		#endregion
 
 		/// <summary>
-		/// The name of the game.
+		/// Gets the name of the game.
 		/// </summary>
 		public string Name
 		{
@@ -200,7 +200,7 @@ namespace Madeira.Core
 		}
 
 		/// <summary>
-		/// The width of the game.
+		/// Gets the width of the game.
 		/// </summary>
 		public int Width
 		{
@@ -209,7 +209,7 @@ namespace Madeira.Core
 		}
 
 		/// <summary>
-		/// The height of the game.
+		/// Gets te height of the game.
 		/// </summary>
 		public int Height
 		{
@@ -218,7 +218,7 @@ namespace Madeira.Core
 		}
 
 		/// <summary>
-		/// The elapsed time for the game.
+		/// Gets the elapsed time for the game.
 		/// </summary>
 		public long Time
 		{
@@ -227,7 +227,7 @@ namespace Madeira.Core
 		}
 
 		/// <summary>
-		/// The input handler for the game.
+		/// Gets the input handler for the game.
 		/// </summary>
 		public Input Input
 		{
@@ -236,7 +236,7 @@ namespace Madeira.Core
 		}
 
 		/// <summary>
-		/// The asset library for the game.
+		/// Gets the asset library for the game.
 		/// </summary>
 		public Library Library
 		{
@@ -245,7 +245,7 @@ namespace Madeira.Core
 		}
 
 		/// <summary>
-		/// The random for the game.
+		/// Gets the random for the game.
 		/// </summary>
 		public Random Random
 		{

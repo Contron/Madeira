@@ -163,7 +163,7 @@ namespace Madeira.Maths
 		}
 
 		/// <summary>
-		/// The left point.
+		/// Gets the left point.
 		/// </summary>
 		public static Point Left
 		{
@@ -174,7 +174,7 @@ namespace Madeira.Maths
 		}
 
 		/// <summary>
-		/// The right point.
+		/// Gets the right point.
 		/// </summary>
 		public static Point Right
 		{
@@ -185,7 +185,7 @@ namespace Madeira.Maths
 		}
 
 		/// <summary>
-		/// The up point.
+		/// Gets the up point.
 		/// </summary>
 		public static Point Up
 		{
@@ -196,7 +196,7 @@ namespace Madeira.Maths
 		}
 
 		/// <summary>
-		/// The down point.
+		/// Gets the down point.
 		/// </summary>
 		public static Point Down
 		{
@@ -207,7 +207,7 @@ namespace Madeira.Maths
 		}
 
 		/// <summary>
-		/// The zero point.
+		/// Gets the zero point.
 		/// </summary>
 		public static Point Zero
 		{
@@ -218,7 +218,7 @@ namespace Madeira.Maths
 		}
 
 		/// <summary>
-		/// The X value of the point.
+		/// Gets or sets the X value of the point.
 		/// </summary>
 		public double X
 		{
@@ -227,7 +227,7 @@ namespace Madeira.Maths
 		}
 
 		/// <summary>
-		/// The Y value of the point.
+		/// Gets or sets the Y value of the point.
 		/// </summary>
 		public double Y
 		{

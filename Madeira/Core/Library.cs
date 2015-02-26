@@ -111,7 +111,7 @@ namespace Madeira.Core
 		}
 
 		/// <summary>
-		/// The path to the resources folder.
+		/// Gets the path to the resources folder.
 		/// </summary>
 		public static readonly string Resources = "Resources";
 

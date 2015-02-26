@@ -56,7 +56,7 @@ namespace Madeira.Resources
 		}
 
 		/// <summary>
-		/// The ID of the texture.
+		/// Gets the ID of the texture.
 		/// </summary>
 		public int ID
 		{
@@ -65,7 +65,7 @@ namespace Madeira.Resources
 		}
 
 		/// <summary>
-		/// The width of the texture.
+		/// Gets the width of the texture.
 		/// </summary>
 		public int Width
 		{
@@ -74,7 +74,7 @@ namespace Madeira.Resources
 		}
 
 		/// <summary>
-		/// The height of the texture.
+		/// Gets the height of the texture.
 		/// </summary>
 		public int Height
 		{
