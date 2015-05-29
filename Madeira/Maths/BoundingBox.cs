@@ -21,12 +21,12 @@ namespace Madeira.Maths
 		/// <returns>if any intersection occurs</returns>
 		public static bool Intersects(Vector start1, Vector size1, Vector start2, Vector size2)
 		{
-			return ((start1.X + size1.X) >= start2.X &&
-				(start1.Y + size1.Y) >= start2.Y &&
-				(start1.Z + size1.Z) >= start2.Z &&
-				(start1.X <= (start2.X + size2.X)) &&
-				(start1.Y <= (start2.Y + size2.Y)) &&
-				(start1.Z <= (start2.Z + size2.Z)));
+			return start1.X + size1.X >= start2.X &&
+                start1.Y + size1.Y >= start2.Y &&
+                start1.Z + size1.Z >= start2.Z &&
+                start1.X <= start2.X + size2.X &&
+                start1.Y <= start2.Y + size2.Y &&
+                start1.Z <= start2.Z + size2.Z;
 		}
 
 		/// <summary>
@@ -39,10 +39,10 @@ namespace Madeira.Maths
 		/// <returns>if any intersection occurs</returns>
 		public static bool Intersects(Point start1, Point size1, Point start2, Point size2)
 		{
-			return ((start1.X + size1.X) >= start2.X &&
-				(start1.Y + size1.Y) >= start2.Y &&
-				(start1.X <= (start2.X + size2.X)) &&
-				(start1.Y <= (start2.Y + size2.Y)));
+			return start1.X + size1.X >= start2.X &&
+                start1.Y + size1.Y >= start2.Y &&
+                start1.X <= start2.X + size2.X &&
+                start1.Y <= start2.Y + size2.Y;
 		}
 	}
 }

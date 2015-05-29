@@ -152,11 +152,9 @@ namespace Madeira.Maths
 		/// <returns>the result</returns>
 		public double Distance(Point point)
 		{
-			//offset
 			var offsetX = (this.X - point.X);
 			var offsetY = (this.Y - point.Y);
 
-			//distance
 			var distance = Math.Sqrt((offsetX * offsetX) + (offsetY * offsetY));
 
 			return distance;

@@ -46,7 +46,6 @@ namespace Madeira.Resources
 		/// </summary>
 		public void Play()
 		{
-			//play
 			AL.SourcePlay(this.ID);
 		}
 
@@ -55,7 +54,6 @@ namespace Madeira.Resources
 		/// </summary>
 		public void Pause()
 		{
-			//pause
 			AL.SourcePause(this.ID);
 		}
 
@@ -64,7 +62,6 @@ namespace Madeira.Resources
 		/// </summary>
 		public void Stop()
 		{
-			//stop
 			AL.SourceStop(this.ID);
 		}
 

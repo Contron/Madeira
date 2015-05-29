@@ -38,14 +38,14 @@ namespace Madeira.Core
 			this.Library = new Library();
 			this.Random = new Random();
 
-			this.gameWindow = new GameWindow(this.Width, this.Height, GraphicsMode.Default, this.Name)
+			this.window = new GameWindow(this.Width, this.Height, GraphicsMode.Default, this.Name)
 			{
 				VSync = VSyncMode.Adaptive,
 				WindowBorder = WindowBorder.Fixed,
 				CursorVisible = false,
 				Icon = icon
 			};
-			this.audioContext = new AudioContext();
+			this.audio = new AudioContext();
 
 			this.state = null;
 
@@ -57,11 +57,9 @@ namespace Madeira.Core
 		/// </summary>
 		public void Run()
 		{
-			//debug
 			Debug.Information("Running game...");
 
-			//run
-			this.gameWindow.Run(60.0);
+			this.window.Run(60.0);
 		}
 
 		/// <summary>
@@ -69,11 +67,9 @@ namespace Madeira.Core
 		/// </summary>
 		public void Stop()
 		{
-			//debug
 			Debug.Information("Stopping game...");
 
-			//stop
-			this.gameWindow.Close();
+			this.window.Close();
 		}
 
 		/// <summary>
@@ -82,33 +78,24 @@ namespace Madeira.Core
 		/// <param name="state">the state</param>
 		public void ChangeState(State state)
 		{
-			//debug
 			Debug.Information("Changing state to {0}...", state.GetType().Name);
 
 			if (this.state != null)
 			{
-				//exit
 				this.state.Exit();
 			}
 
-			//enter
 			this.state = state;
 			this.state.Enter();
 		}
 
-		/// <summary>
-		/// Prepares the game.
-		/// </summary>
 		private void Prepare()
 		{
-			//debug
 			Debug.Information("Preparing OpenGL...");
 
-			//caps
 			GL.Enable(EnableCap.AlphaTest);
 			GL.Enable(EnableCap.Blend);
 
-			//miscellaneous
 			GL.ClearColor(0.3F, 0.3F, 0.6F, 0.0F);
 			GL.AlphaFunc(AlphaFunction.Greater, 0F);
 			GL.BlendFunc(BlendingFactorSrc.SrcAlpha, BlendingFactorDest.OneMinusSrcAlpha);
@@ -116,18 +103,13 @@ namespace Madeira.Core
 			GL.ShadeModel(ShadingModel.Smooth);
 			GL.Hint(HintTarget.PerspectiveCorrectionHint, HintMode.Nicest);
 
-			//debug
 			Debug.Information("Preparing OpenAL...");
 
-			//sound
 			AL.DistanceModel(ALDistanceModel.LinearDistanceClamped);
 			AL.Listener(ALListener3f.Position, 0F, 0F, 0F);
 			AL.Listener(ALListener3f.Velocity, 0F, 0F, 0F);
 		}
 
-		/// <summary>
-		/// Updates the game.
-		/// </summary>
 		private void Update()
 		{
 			if (this.state != null)
@@ -135,17 +117,12 @@ namespace Madeira.Core
 				this.state.Update();
 			}
 
-			//update
 			this.Time++;
 			this.Input.Update();
 		}
 
-		/// <summary>
-		/// Renders the game.
-		/// </summary>
 		private void Render()
 		{
-			//clear
 			GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
 
 			if (this.state != null)
@@ -153,42 +130,17 @@ namespace Madeira.Core
 				this.state.Render();
 			}
 
-			//swap
-			this.gameWindow.SwapBuffers();
+			this.window.SwapBuffers();
 		}
 
-		/// <summary>
-		/// Initialises the rest of the game.
-		/// </summary>
 		private void Initialise()
 		{
-			//debug
 			Debug.Information("Initialising window...");
 
-			//events
-			this.gameWindow.Load += this.LoadHandler;
-			this.gameWindow.UpdateFrame += this.UpdateHandler;
-			this.gameWindow.RenderFrame += this.RenderHandler;
+			this.window.Load += (sender, eventArgs) => this.Prepare();
+			this.window.UpdateFrame += (sender, eventArgs) => this.Update();
+			this.window.RenderFrame += (sender, eventArgs) => this.Render();
 		}
-
-		#region Event Handlers
-
-		private void LoadHandler(object sender, EventArgs eventArgs)
-		{
-			this.Prepare();
-		}
-
-		private void UpdateHandler(object sender, FrameEventArgs eventArgs)
-		{
-			this.Update();
-		}
-
-		private void RenderHandler(object sender, FrameEventArgs eventArgs)
-		{
-			this.Render();
-		}
-
-		#endregion
 
 		/// <summary>
 		/// Gets the name of the game.
@@ -253,8 +205,8 @@ namespace Madeira.Core
 			private set;
 		}
 
-		private GameWindow gameWindow;
-		private AudioContext audioContext;
+		private GameWindow window;
+		private AudioContext audio;
 
 		private State state;
 	}

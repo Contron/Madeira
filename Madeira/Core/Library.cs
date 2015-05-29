@@ -19,7 +19,7 @@ namespace Madeira.Core
 		/// <summary>
 		/// Creates a new library.
 		/// </summary>
-		internal Library()
+		public Library()
 		{
 			this.loaders = new Dictionary<Type, Loader>();
 
@@ -34,7 +34,6 @@ namespace Madeira.Core
 		/// <returns></returns>
 		public T Get<T>(string file)
 		{
-			//type
 			var type = typeof(T);
 
 			if (!this.loaders.ContainsKey(type))
@@ -42,7 +41,6 @@ namespace Madeira.Core
 				throw new LibraryException("No appropriate loader.");
 			}
 
-			//load
 			var path = this.LocateResource(file);
 			var loader = (Loader<T>) this.loaders[type];
 			var result = loader.Get(path);
@@ -55,56 +53,39 @@ namespace Madeira.Core
 		/// </summary>
 		/// <param name="type">the type</param>
 		/// <param name="loader">the loader</param>
-		public void RegisterLoader(Type type, Loader loader)
+		public void Register(Type type, Loader loader)
 		{
-			//debug
 			Debug.Information("Registering loader for type '{0}'...", type.Name);
 
-			//set
 			this.loaders[type] = loader;
 		}
 
-		/// <summary>
-		/// Registers the default loaders.
-		/// </summary>
 		private void RegisterDefaultLoaders()
 		{
-			//add
-			this.RegisterLoader(typeof(Texture), new TextureLoader());
-			this.RegisterLoader(typeof(Sound), new SoundLoader());
+			this.Register(typeof(Texture), new TextureLoader());
+			this.Register(typeof(Sound), new SoundLoader());
 		}
 
-		/// <summary>
-		/// Locates the full path for the specified file, attempting to locate it with three attempts.
-		/// The first attempt will search in the resources folder.
-		/// The second attempt will search two levels up in the resources folder (in the case of Debug mode).
-		/// The third attempt will search simply for the file on its own.
-		/// </summary>
-		/// <param name="file">the file</param>
-		/// <returns>the full path</returns>
 		private string LocateResource(string file)
 		{
-			//root
 			var root = Path.Combine(Directory.GetCurrentDirectory());
 
-			//directories
-			var mainPath = Path.Combine(root, Library.Resources, file);
-			var fallbackPath = Path.Combine(root, "..", "..", Library.Resources, file);
-			var absolutePath = file;
+			var mainFile = Path.Combine(root, Library.Resources, file);
+			var fallbackFile = Path.Combine(root, "..", "..", Library.Resources, file);
 
-			if (File.Exists(mainPath))
+            if (File.Exists(mainFile))
 			{
-				return mainPath;
+                return mainFile;
 			}
 
-			if (File.Exists(fallbackPath))
+            if (File.Exists(fallbackFile))
 			{
-				return fallbackPath;
+                return fallbackFile;
 			}
 
-			if (File.Exists(absolutePath))
+			if (File.Exists(file))
 			{
-				return absolutePath;
+                return file;
 			}
 
 			throw new LibraryException("Resource not found.");

@@ -154,12 +154,10 @@ namespace Madeira.Maths
 		/// <returns>the result</returns>
 		public double Distance(Vector vector)
 		{
-			//offset
 			var offsetX = (this.X - vector.X);
 			var offsetY = (this.Y - vector.Y);
 			var offsetZ = (this.Z - vector.Z);
 
-			//distance
 			var distance = Math.Sqrt((offsetX * offsetX) + (offsetY * offsetY) + (offsetZ * offsetZ));
 
 			return distance;

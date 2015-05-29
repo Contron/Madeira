@@ -22,7 +22,6 @@ namespace Madeira.Core.Visuals
 		/// <param name="angle">the angle</param>
 		public static void Rotate(double angle)
 		{
-			//rotate
 			GL.Rotate(angle, 0, 0, 1);
 		}
 
@@ -33,7 +32,6 @@ namespace Madeira.Core.Visuals
 		/// <param name="y">the Y</param>
 		public static void Translate(double x, double y)
 		{
-			//translate
 			GL.Translate(x, y, 0);
 		}
 
@@ -44,7 +42,6 @@ namespace Madeira.Core.Visuals
 		/// <param name="y">the Y</param>
 		public static void Scale(double x, double y)
 		{
-			//scale
 			GL.Scale(x, y, 0);
 		}
 
@@ -207,38 +204,23 @@ namespace Madeira.Core.Visuals
 		{
 			return (text.Length * size);
 		}
-		
-		/// <summary>
-		/// Performs a rectangle rendering operation.
-		/// </summary>
-		/// <param name="primitiveType">the primitive type</param>
-		/// <param name="colour">the colour</param>
-		/// <param name="texture">the texture</param>
-		/// <param name="x">the X</param>
-		/// <param name="y">the Y</param>
-		/// <param name="width">the width</param>
-		/// <param name="height">the height</param>
+
 		private static void DoRectangle(PrimitiveType primitiveType, Colour colour, Texture texture, double x, double y, double width, double height)
 		{
-			//push
 			GL.PushAttrib(AttribMask.ColorBufferBit | AttribMask.TextureBit);
 
 			if (colour != null)
 			{
-				//colour
 				colour.Apply();
 			}
 
 			if (texture != null)
 			{
-				//bind
 				texture.Bind();
 			}
 
-			//begin
 			GL.Begin(primitiveType);
 
-			//vertexes
 			GL.TexCoord2(0.0, 0.0);
 			GL.Vertex2(x, y);
 			GL.TexCoord2(1.0, 0.0);
@@ -248,45 +230,32 @@ namespace Madeira.Core.Visuals
 			GL.TexCoord2(0.0, 1.0);
 			GL.Vertex2(x, y + height);
 
-			//end
 			GL.End();
 			GL.PopAttrib();
 		}
 
-		/// <summary>
-		/// Performs a text rendering operation.
-		/// </summary>
-		/// <param name="colour">the colour</param>
-		/// <param name="texture">the texture</param>
-		/// <param name="text"> the text</param>
-		/// <param name="x">the X</param>
-		/// <param name="y">the Y</param>
-		/// <param name="size">the size</param>
 		private static void DoText(Colour colour, Texture texture, string text, double x, double y, int size)
 		{
-			//push
 			GL.PushAttrib(AttribMask.ColorBufferBit | AttribMask.TextureBit);
 
 			if (colour != null)
 			{
-				//colour
 				colour.Apply();
 			}
 
-			//texture
-			texture.Bind();
+            if (texture != null)
+            {
+                texture.Bind();
+            }
 
-			//begin
 			GL.Begin(PrimitiveType.Quads);
 
-			//positioning
 			var amount = 16;
 			var spacing = (texture.Width / amount);
 			var textureSpacing = ((double) spacing / texture.Width);
 
 			for (var index = 0; index < text.Length; index++)
 			{
-				//character
 				var character = text[index];
 
 				if (character == ' ')
@@ -294,12 +263,10 @@ namespace Madeira.Core.Visuals
 					continue;
 				}
 
-				//position
-				var actualX = (x + (size * index));
-				var textureX = (((character % amount) * spacing) / (double) texture.Width);
-				var textureY = (((character / amount) * spacing) / (double) texture.Height);
+				var actualX = x + (size * index);
+				var textureX = ((character % amount) * spacing) / (double) texture.Width;
+				var textureY = ((character / amount) * spacing) / (double) texture.Height;
 
-				//vertexes
 				GL.TexCoord2(textureX, textureY);
 				GL.Vertex2(actualX, y);
 				GL.TexCoord2(textureX + textureSpacing, textureY);
@@ -310,45 +277,30 @@ namespace Madeira.Core.Visuals
 				GL.Vertex2(actualX, y + size);
 			}
 
-			//end
 			GL.End();
 			GL.PopAttrib();
 		}
 
-		/// <summary>
-		/// Performs a point rendering operation.
-		/// </summary>
-		/// <param name="colour">the colour</param>
-		/// <param name="texture">the texture</param>
-		/// <param name="x">the X</param>
-		/// <param name="y">the Y</param>
-		/// <param name="size">the size</param>
 		private static void DoPoint(Colour colour, Texture texture, double x, double y, double size)
 		{
-			//push
 			GL.PushAttrib(AttribMask.ColorBufferBit | AttribMask.TextureBit);
 
 			if (colour != null)
 			{
-				//colour
 				colour.Apply();
 			}
 
 			if (texture != null)
 			{
-				//bind
 				texture.Bind();
 			}
 
-			//size
 			GL.PointSize((float) size);
 
-			//begin
 			GL.Begin(PrimitiveType.Points);
 			GL.Vertex2(x, y);
 			GL.End();
 
-			//end
 			GL.PopAttrib();
 		}
 	}

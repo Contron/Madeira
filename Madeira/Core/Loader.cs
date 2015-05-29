@@ -25,7 +25,7 @@ namespace Madeira.Core
 		/// <summary>
 		/// Creates a new loader.
 		/// </summary>
-		internal Loader()
+		public Loader()
 		{
 			this.resources = new Dictionary<string, T>();
 		}
@@ -39,12 +39,10 @@ namespace Madeira.Core
 		{
 			if (!this.resources.ContainsKey(file))
 			{
-				//debug
 				Debug.Information("Loading resource '{0}'...", file);
 
 				try
 				{
-					//load
 					this.resources[file] = this.Load(file);
 				}
 				catch (Exception exception)

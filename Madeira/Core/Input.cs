@@ -10,19 +10,17 @@ using System.Threading.Tasks;
 namespace Madeira.Core
 {
 	/// <summary>
-	/// Represents the input handler to listen for keyboard and mouse events.
+	/// Represents the input handler to listen for keyboard and keyboard events.
 	/// </summary>
 	public class Input
 	{
 		/// <summary>
 		/// Creates a new input handler.
 		/// </summary>
-		internal Input()
+		public Input()
 		{
-			this.keyboardState = default(KeyboardState);
-
-			this.mouseState = default(MouseState);
-			this.previousMouseState = default(MouseState);
+			this.keyboard = default(KeyboardState);
+			this.mouse = default(MouseState);
 		}
 
 		/// <summary>
@@ -32,55 +30,37 @@ namespace Madeira.Core
 		/// <returns>if the key is down</returns>
 		public bool IsKeyDown(Key key)
 		{
-			return this.keyboardState.IsKeyDown(key);
+			return this.keyboard.IsKeyDown(key);
 		}
 
 		/// <summary>
-		/// Returns if the specified mouse button is down.
+		/// Returns if the specified keyboard button is down.
 		/// </summary>
-		/// <param name="mouseButton">the mouse button</param>
-		/// <returns>if the mouse button is down</returns>
-		public bool IsMouseButtonDown(MouseButton mouseButton)
+		/// <param name="keyboardButton">the keyboard button</param>
+		/// <returns>if the keyboard button is down</returns>
+		public bool IsMouseButtonDown(MouseButton keyboardButton)
 		{
-			return this.mouseState.IsButtonDown(mouseButton);
+			return this.mouse.IsButtonDown(keyboardButton);
 		}
 
-		/// <summary>
-		/// Updates the input.
-		/// </summary>
 		internal void Update()
 		{
-			this.keyboardState = Keyboard.GetState();
-
-			this.previousMouseState = this.mouseState;
-			this.mouseState = Mouse.GetState();
+			this.keyboard = Keyboard.GetState();
+			this.mouse = Mouse.GetState();
 		}
 
 		/// <summary>
-		/// Gets the current position of the mouse for the input.
+		/// Gets the current position of the keyboard for the input.
 		/// </summary>
 		public Point MousePosition
 		{
 			get
 			{
-				return new Point(this.mouseState.X, this.mouseState.Y);
+				return new Point(this.mouse.X, this.mouse.Y);
 			}
 		}
 
-		/// <summary>
-		/// Gets the current velocity of the mouse for the input.
-		/// </summary>
-		public Point MouseVelocity
-		{
-			get
-			{
-				return new Point(this.mouseState.X - this.previousMouseState.X, this.mouseState.Y - this.previousMouseState.Y);
-			}
-		}
-
-		private KeyboardState keyboardState;
-
-		private MouseState mouseState;
-		private MouseState previousMouseState;
+		private KeyboardState keyboard;
+		private MouseState mouse;
 	}
 }

@@ -40,7 +40,6 @@ namespace Madeira.Resources
 		/// </summary>
 		public void Bind()
 		{
-			//bind
 			GL.Enable(EnableCap.Texture2D);
 			GL.BindTexture(TextureTarget.Texture2D, this.ID);
 		}
@@ -50,7 +49,6 @@ namespace Madeira.Resources
 		/// </summary>
 		public void Unbind()
 		{
-			//unbind
 			GL.Disable(EnableCap.Texture2D);
 			GL.BindTexture(TextureTarget.Texture2D, 0);
 		}

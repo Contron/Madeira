@@ -24,28 +24,26 @@ namespace Madeira.Core.Loaders
 		/// <returns>the texture</returns>
 		protected override Texture Load(string file)
 		{
-			//bitmap
 			var bitmap = new Bitmap(file);
-			var width = bitmap.Width;
-			var height = bitmap.Height;
-			var bitmapData = bitmap.LockBits(new Rectangle(0, 0, width, height), ImageLockMode.ReadOnly, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
 
-			//id
-			var id = GL.GenTexture();
+            using (bitmap)
+            {
+                var width = bitmap.Width;
+                var height = bitmap.Height;
+                var bitmapData = bitmap.LockBits(new Rectangle(0, 0, width, height), ImageLockMode.ReadOnly, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
 
-			//binding
-			GL.BindTexture(TextureTarget.Texture2D, id);
-			GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, (int) TextureMinFilter.Nearest);
-			GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (int) TextureMagFilter.Nearest);
+                var id = GL.GenTexture();
 
-			//create
-			GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, width, height, 0, OpenTK.Graphics.OpenGL.PixelFormat.Bgra, PixelType.UnsignedByte, bitmapData.Scan0);
+                GL.BindTexture(TextureTarget.Texture2D, id);
+                GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, (int) TextureMinFilter.Nearest);
+                GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (int) TextureMagFilter.Nearest);
 
-			//free
-			bitmap.UnlockBits(bitmapData);
-			bitmap.Dispose();
+                GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.Rgba, width, height, 0, OpenTK.Graphics.OpenGL.PixelFormat.Bgra, PixelType.UnsignedByte, bitmapData.Scan0);
 
-			return new Texture(id, width, height);
+                bitmap.UnlockBits(bitmapData);
+
+                return new Texture(id, width, height);
+            }
 		}
 	}
 }

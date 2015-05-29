@@ -106,7 +106,6 @@ namespace Madeira.Maths
 		/// </summary>
 		public void Apply()
 		{
-			//set
 			GL.Color4(this.Red, this.Green, this.Blue, this.Alpha);
 		}
 

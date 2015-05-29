@@ -25,7 +25,6 @@ namespace Madeira.Core.Visuals
 		/// <param name="z">the Z</param>
 		public static void Rotate(double angle, double x, double y, double z)
 		{
-			//rotate
 			GL.Rotate(angle, x, y, z);
 		}
 
@@ -37,7 +36,6 @@ namespace Madeira.Core.Visuals
 		/// <param name="z">the Z</param>
 		public static void Translate(double x, double y, double z)
 		{
-			//translate
 			GL.Translate(x, y, z);
 		}
 
@@ -49,7 +47,6 @@ namespace Madeira.Core.Visuals
 		/// <param name="z">the Z</param>
 		public static void Scale(double x, double y, double z)
 		{
-			//scale
 			GL.Scale(x, y, z);
 		}
 
@@ -133,39 +130,22 @@ namespace Madeira.Core.Visuals
 			Graphics3D.DoCube(PrimitiveType.Quads, colour, texture, position.X, position.Y, position.Z, size.X, size.Y, size.Z);
 		}
 
-		/// <summary>
-		/// Performs a cube rendering operation.
-		/// </summary>
-		/// <param name="primitiveType">the primitive type</param>
-		/// <param name="colour">the colour</param>
-		/// <param name="texture">the texture</param>
-		/// <param name="x">the X</param>
-		/// <param name="y">the Y</param>
-		/// <param name="z">the Z</param>
-		/// <param name="width">the width</param>
-		/// <param name="height">the height</param>
-		/// <param name="length">the length</param>
 		private static void DoCube(PrimitiveType primitiveType, Colour colour, Texture texture, double x, double y, double z, double width, double height, double length)
 		{
-			//push
 			GL.PushAttrib(AttribMask.ColorBufferBit | AttribMask.TextureBit);
 
 			if (colour != null)
 			{
-				//colour
 				colour.Apply();
 			}
 
 			if (texture != null)
 			{
-				//bind
 				texture.Bind();
 			}
 
-			//begin
 			GL.Begin(primitiveType);
 
-			//top
 			GL.TexCoord2(0.0, 0.0);
 			GL.Vertex3(x, y + height, z);
 			GL.TexCoord2(1.0, 0.0);
@@ -175,7 +155,6 @@ namespace Madeira.Core.Visuals
 			GL.TexCoord2(0.0, 1.0);
 			GL.Vertex3(x, y + height, z + length);
 
-			//bottom
 			GL.TexCoord2(0.0, 0.0);
 			GL.Vertex3(x, y, z);
 			GL.TexCoord2(1.0, 0.0);
@@ -185,7 +164,6 @@ namespace Madeira.Core.Visuals
 			GL.TexCoord2(0.0, 1.0);
 			GL.Vertex3(x, y, z + length);
 
-			//end
 			GL.End();
 			GL.PopAttrib();
 		}

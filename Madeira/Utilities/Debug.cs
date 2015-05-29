@@ -96,12 +96,8 @@ namespace Madeira.Utilities
 		/// <param name="message">the message</param>
 		public static void Write(ConsoleColor consoleColor, string message)
 		{
-			//time
-			var time = DateTime.Now.ToString("HH:mm:ss");
-
-			//print
 			Console.ForegroundColor = consoleColor;
-			Console.Write(string.Format("[{0}] {1}", time, message));
+            Console.Write(string.Format("[{0}] {1}", DateTime.Now.ToString("HH:mm:ss"), message));
 			Console.ResetColor();
 		}
 	}

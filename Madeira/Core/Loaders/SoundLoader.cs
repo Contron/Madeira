@@ -29,7 +29,6 @@ namespace Madeira.Core.Loaders
 		{
 			using (BinaryReader binaryReader = new BinaryReader(File.Open(file, FileMode.Open)))
 			{
-				//signature
 				var signature = new string(binaryReader.ReadChars(4));
 
 				if (signature != "RIFF")
@@ -37,10 +36,7 @@ namespace Madeira.Core.Loaders
 					throw new ResourceException("Sound is not a RIFF file.");
 				}
 
-				//chunk size
 				var chunkSize = binaryReader.ReadInt32();
-
-				//format
 				var format = new string(binaryReader.ReadChars(4));
 
 				if (format != "WAVE")
@@ -48,7 +44,6 @@ namespace Madeira.Core.Loaders
 					throw new ResourceException("Sound is not a WAVE file.");
 				}
 
-				//format signature
 				var formatSignature = new string(binaryReader.ReadChars(4));
 
 				if (formatSignature != "fmt ")
@@ -56,7 +51,6 @@ namespace Madeira.Core.Loaders
 					throw new ResourceException("Sound format is not supported.");
 				}
 
-				//data
 				var formatChunkSize = binaryReader.ReadInt32();
 				var audioFormat = binaryReader.ReadInt16();
 				var channels = binaryReader.ReadInt16();
@@ -65,7 +59,6 @@ namespace Madeira.Core.Loaders
 				var blockAlign = binaryReader.ReadInt16();
 				var bitsPerSample = binaryReader.ReadInt16();
 
-				//data signature
 				var dataSignature = new string(binaryReader.ReadChars(4));
 
 				if (dataSignature != "data")
@@ -73,14 +66,11 @@ namespace Madeira.Core.Loaders
 					throw new ResourceException("Sound format is not supported.");
 				}
 
-				//data
 				var data = binaryReader.ReadBytes((int) binaryReader.BaseStream.Length);
 
-				//ids
 				var buffer = AL.GenBuffer();
 				var source = AL.GenSource();
 
-				//create
 				AL.BufferData(buffer, this.GetFormat(channels, bitsPerSample), data, data.Length, sampleRate);
 				AL.Source(source, ALSourcei.Buffer, buffer);
 				AL.Source(source, ALSourcef.MaxDistance, 1.0F);
@@ -102,11 +92,11 @@ namespace Madeira.Core.Loaders
 			{
 				case 1:
 				{
-					return (bits == 8 ? ALFormat.Mono8 : ALFormat.Mono16);
+					return bits == 8 ? ALFormat.Mono8 : ALFormat.Mono16;
 				}
 				case 2:
 				{
-					return (bits == 8 ? ALFormat.Stereo8 : ALFormat.Stereo16);
+					return bits == 8 ? ALFormat.Stereo8 : ALFormat.Stereo16;
 				}
 				default:
 				{
